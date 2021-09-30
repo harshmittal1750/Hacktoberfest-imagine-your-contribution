@@ -34,7 +34,7 @@ Contribute anything for your T-shirt, must be relevant that can add some value t
   <img src="https://contrib.rocks/image?repo=harshmittal1750/Hacktoberfest-imagine-your-contribution" />
 </a>
 
-Made with [contributors-img](https://contrib.rocks).
+
 <div align="center">
 <a href="https://twitter.com/harshmittal1750">
  <img src="https://user-images.githubusercontent.com/63895602/122171696-a2b6ac00-ce9d-11eb-8831-2ec5964bdd5f.png" width="30" height="30">
