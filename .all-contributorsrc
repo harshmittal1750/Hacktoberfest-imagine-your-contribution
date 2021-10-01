@@ -1,0 +1,15 @@
+{
+  "projectName": "Hacktoberfest-imagine-your-contribution",
+  "projectOwner": "harshmittal1750",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "CONTRIBUTOR.md",
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "commitConvention": "gitmoji",
+  "contributors": [],
+  "contributorsPerLine": 7
+}

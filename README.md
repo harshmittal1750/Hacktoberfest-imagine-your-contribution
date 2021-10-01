@@ -35,9 +35,13 @@ Contribute anything for your T-shirt, must be relevant that can add some value t
 ###### ⚡  When you’re on the main page for the repository, you’ll see a button to "Star" and “Fork” the repository on your upper right-hand side of the page, underneath your user icon.
 
 <h2 align="center">😎🙏 Thanks to Our Awesome Contributors 🙏😎</h2>
-<a href="https://github.com/harshmittal1750/Hacktoberfest-imagine-your-contribution/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=harshmittal1750/Hacktoberfest-imagine-your-contribution" />
-</a>
+
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-0-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-0-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 
 <div align="center">
