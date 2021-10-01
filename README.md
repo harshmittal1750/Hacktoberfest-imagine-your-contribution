@@ -2,6 +2,11 @@
 # Hacktoberfest-imagine-your-contribution
 Contribute anything for your T-shirt, must be relevant that can add some value to this repo.
 
+![GitHub issues](https://img.shields.io/github/issues/harshmittal1750/Hacktoberfest-imagine-your-contribution?style=plastic-square)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/harshmittal1750/Hacktoberfest-imagine-your-contribution?style=plastic-square)
+![GitHub contributors](https://img.shields.io/github/contributors/harshmittal1750/Hacktoberfest-imagine-your-contribution?style=plastic-square)
+![GitHub forks](https://img.shields.io/github/forks/harshmittal1750/Hacktoberfest-imagine-your-contribution?color=dark-green&style=plastic-square)
+
 # MUST STEPS TO DO :
 - STAR and FORK the repo,
 - if adding a program ADD it to its relevant category,
