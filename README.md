@@ -6,6 +6,7 @@ Contribute anything for your T-shirt, must be relevant that can add some value t
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/harshmittal1750/Hacktoberfest-imagine-your-contribution?style=plastic-square)
 ![GitHub contributors](https://img.shields.io/github/contributors/harshmittal1750/Hacktoberfest-imagine-your-contribution?style=plastic-square)
 ![GitHub forks](https://img.shields.io/github/forks/harshmittal1750/Hacktoberfest-imagine-your-contribution?color=dark-green&style=plastic-square)
+[![Repository Visitors](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fharshmittal1750%2FHacktoberfest-imagine-your-contribution&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=visitors&edge_flat=true)](https://hits.seeyoufarm.com)
 
 # MUST STEPS TO DO :
 - STAR and FORK the repo,
@@ -54,3 +55,4 @@ Contribute anything for your T-shirt, must be relevant that can add some value t
 </a>
 <!-- to use these icons, go to www.flaticon.com & copy the png to clipboard -->
 </div>
+
