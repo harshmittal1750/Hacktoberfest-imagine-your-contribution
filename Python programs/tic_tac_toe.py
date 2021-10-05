@@ -1,256 +1,116 @@
-#!/usr/bin/env python3
-from math import inf as infinity
-from random import choice
-import platform
-import time
-from os import system
+from tkinter import *
+import tkinter.messagebox
+tk = Tk()
+tk.title("Tic Tac Toe Game")
+
+pa = StringVar()
+playerb = StringVar()
+p1 = StringVar()
+p2 = StringVar()
+
+player1_name = Entry(tk, textvariable=p1, bd=5)
+player1_name.grid(row=1, column=1, columnspan=8)
+player2_name = Entry(tk, textvariable=p2, bd=5)
+player2_name.grid(row=2, column=1, columnspan=8)
+
+bclick = True
+flag = 0
+
+def disableButton():
+    b1.configure(state=DISABLED)
+    b2.configure(state=DISABLED)
+    b3.configure(state=DISABLED)
+    b4.configure(state=DISABLED)
+    b5.configure(state=DISABLED)
+    b6.configure(state=DISABLED)
+    b7.configure(state=DISABLED)
+    b8.configure(state=DISABLED)
+    b9.configure(state=DISABLED)
 
 
-HUMAN = -1
-COMP = +1
-board = [
-    [0, 0, 0],
-    [0, 0, 0],
-    [0, 0, 0],
-]
+
+def btnClick(buttons):
+    global bclick, flag, player2_name, player1_name, player, pa
+    if buttons["text"] == " " and bclick == True:
+        buttons["text"] = "X"
+        bclick = False
+        player = p2.get() + " Wins!"
+        pa = p1.get() + " Wins!"
+        checkForWin()
+        flag += 1
 
 
-def evaluate(state):
-
-    if wins(state, COMP):
-        score = +1
-    elif wins(state, HUMAN):
-        score = -1
+    elif buttons["text"] == " " and bclick == False:
+        buttons["text"] = "O"
+        bclick = True
+        checkForWin()
+        flag += 1
     else:
-        score = 0
+        tkinter.messagebox.showinfo("Tic-Tac-Toe", "Button already Clicked!")
 
-    return score
+def checkForWin():
+    if (b1['text'] == 'X' and b2['text'] == 'X' and b3['text'] == 'X' or
+        b4['text'] == 'X' and b5['text'] == 'X' and b6['text'] == 'X' or
+        b7['text'] == 'X' and b8['text'] == 'X' and b9['text'] == 'X' or
+        b1['text'] == 'X' and b5['text'] == 'X' and b9['text'] == 'X' or
+        b3['text'] == 'X' and b5['text'] == 'X' and b7['text'] == 'X' or
+        b1['text'] == 'X' and b2['text'] == 'X' and b3['text'] == 'X' or
+        b1['text'] == 'X' and b4['text'] == 'X' and b7['text'] == 'X' or
+        b2['text'] == 'X' and b5['text'] == 'X' and b8['text'] == 'X' or
+        b7['text'] == 'X' and b6['text'] == 'X' and b9['text'] == 'X'):
+        disableButton()
+        tkinter.messagebox.showinfo("Tic-Tac-Toe", pa)
 
+    elif(flag == 8):
+        tkinter.messagebox.showinfo("Tic-Tac-Toe", "It is a Tie")
 
-def wins(state, player):
-
-    win_state = [
-        [state[0][0], state[0][1], state[0][2]],
-        [state[1][0], state[1][1], state[1][2]],
-        [state[2][0], state[2][1], state[2][2]],
-        [state[0][0], state[1][0], state[2][0]],
-        [state[0][1], state[1][1], state[2][1]],
-        [state[0][2], state[1][2], state[2][2]],
-        [state[0][0], state[1][1], state[2][2]],
-        [state[2][0], state[1][1], state[0][2]],
-    ]
-    if [player, player, player] in win_state:
-        return True
-    else:
-        return False
-
-
-def game_over(state):
-
-    return wins(state, HUMAN) or wins(state, COMP)
-
-
-def empty_cells(state):
-
-    cells = []
-
-    for x, row in enumerate(state):
-        for y, cell in enumerate(row):
-            if cell == 0:
-                cells.append([x, y])
-
-    return cells
+    elif (b1['text'] == 'O' and b2['text'] == 'O' and b3['text'] == 'O' or
+          b4['text'] == 'O' and b5['text'] == 'O' and b6['text'] == 'O' or
+          b7['text'] == 'O' and b8['text'] == 'O' and b9['text'] == 'O' or
+          b1['text'] == 'O' and b5['text'] == 'O' and b9['text'] == 'O' or
+          b3['text'] == 'O' and b5['text'] == 'O' and b7['text'] == 'O' or
+          b1['text'] == 'O' and b2['text'] == 'O' and b3['text'] == 'O' or
+          b1['text'] == 'O' and b4['text'] == 'O' and b7['text'] == 'O' or
+          b2['text'] == 'O' and b5['text'] == 'O' and b8['text'] == 'O' or
+          b7['text'] == 'O' and b6['text'] == 'O' and b9['text'] == 'O'):
+        disableButton()
+        tkinter.messagebox.showinfo("Tic-Tac-Toe", player)
 
 
-def valid_move(x, y):
+buttons = StringVar()
 
-    if [x, y] in empty_cells(board):
-        return True
-    else:
-        return False
+label = Label( tk, text="Player 1:", font='Helvetica', bg='yellow', fg='black', height=1, width=8)
+label.grid(row=1, column=0)
 
 
-def set_move(x, y, player):
+label = Label( tk, text="Player 2:", font='Helvetica', bg='yellow', fg='black', height=1, width=8)
+label.grid(row=2, column=0)
 
-    if valid_move(x, y):
-        board[x][y] = player
-        return True
-    else:
-        return False
+b1 = Button(tk, text=" ", font='Helvetica', bg='gray', fg='white', height=4, width=8, command=lambda: btnClick(b1))
+b1.grid(row=3, column=0)
 
+b2 = Button(tk, text=' ', font='Helvetica', bg='gray', fg='white', height=4, width=8, command=lambda: btnClick(b2))
+b2.grid(row=3, column=1)
 
-def minimax(state, depth, player):
+b3 = Button(tk, text=' ',font='Helvetica', bg='gray', fg='white', height=4, width=8, command=lambda: btnClick(b3))
+b3.grid(row=3, column=2)
 
-    if player == COMP:
-        best = [-1, -1, -infinity]
-    else:
-        best = [-1, -1, +infinity]
+b4 = Button(tk, text=' ', font='Helvetica', bg='gray', fg='white', height=4, width=8, command=lambda: btnClick(b4))
+b4.grid(row=4, column=0)
 
-    if depth == 0 or game_over(state):
-        score = evaluate(state)
-        return [-1, -1, score]
+b5 = Button(tk, text=' ', font='Helvetica', bg='gray', fg='white', height=4, width=8, command=lambda: btnClick(b5))
+b5.grid(row=4, column=1)
 
-    for cell in empty_cells(state):
-        x, y = cell[0], cell[1]
-        state[x][y] = player
-        score = minimax(state, depth - 1, -player)
-        state[x][y] = 0
-        score[0], score[1] = x, y
+b6 = Button(tk, text=' ', font='Helvetica', bg='gray', fg='white', height=4, width=8, command=lambda: btnClick(b6))
+b6.grid(row=4, column=2)
 
-        if player == COMP:
-            if score[2] > best[2]:
-                best = score  # max value
-        else:
-            if score[2] < best[2]:
-                best = score  # min value
+b7 = Button(tk, text=' ', font='Helvetica', bg='gray', fg='white', height=4, width=8, command=lambda: btnClick(b7))
+b7.grid(row=5, column=0)
 
-    return best
+b8 = Button(tk, text=' ', font='Helvetica', bg='gray', fg='white', height=4, width=8, command=lambda: btnClick(b8))
+b8.grid(row=5, column=1)
 
+b9 = Button(tk, text=' ', font='Helvetica', bg='gray', fg='white', height=4, width=8, command=lambda: btnClick(b9))
+b9.grid(row=5, column=2)
 
-def clean():
-
-    os_name = platform.system().lower()
-    if 'windows' in os_name:
-        system('cls')
-    else:
-        system('clear')
-
-
-def render(state, c_choice, h_choice):
-
-    chars = {
-        -1: h_choice,
-        +1: c_choice,
-        0: ' '
-    }
-    str_line = '---------------'
-
-    print('\n' + str_line)
-    for row in state:
-        for cell in row:
-            symbol = chars[cell]
-            print(f'| {symbol} |', end='')
-        print('\n' + str_line)
-
-
-def ai_turn(c_choice, h_choice):
-
-    depth = len(empty_cells(board))
-    if depth == 0 or game_over(board):
-        return
-
-    clean()
-    print(f'Computer turn [{c_choice}]')
-    render(board, c_choice, h_choice)
-
-    if depth == 9:
-        x = choice([0, 1, 2])
-        y = choice([0, 1, 2])
-    else:
-        move = minimax(board, depth, COMP)
-        x, y = move[0], move[1]
-
-    set_move(x, y, COMP)
-    time.sleep(1)
-
-
-def human_turn(c_choice, h_choice):
-
-    depth = len(empty_cells(board))
-    if depth == 0 or game_over(board):
-        return
-
-    move = -1
-    moves = {
-        1: [0, 0], 2: [0, 1], 3: [0, 2],
-        4: [1, 0], 5: [1, 1], 6: [1, 2],
-        7: [2, 0], 8: [2, 1], 9: [2, 2],
-    }
-
-    clean()
-    print(f'Human turn [{h_choice}]')
-    render(board, c_choice, h_choice)
-
-    while move < 1 or move > 9:
-        try:
-            move = int(input('Use numpad (1..9): '))
-            coord = moves[move]
-            can_move = set_move(coord[0], coord[1], HUMAN)
-
-            if not can_move:
-                print('Bad move')
-                move = -1
-        except (EOFError, KeyboardInterrupt):
-            print('Bye')
-            exit()
-        except (KeyError, ValueError):
-            print('Bad choice')
-
-
-def main():
-    """
-    Main function that calls all functions
-    """
-    clean()
-    h_choice = ''  # X or O
-    c_choice = ''  # X or O
-    first = ''  # if human is the first
-
-    # Human chooses X or O to play
-    while h_choice != 'O' and h_choice != 'X':
-        try:
-            print('')
-            h_choice = input('Choose X or O\nChosen: ').upper()
-        except (EOFError, KeyboardInterrupt):
-            print('Bye')
-            exit()
-        except (KeyError, ValueError):
-            print('Bad choice')
-
-    # Setting computer's choice
-    if h_choice == 'X':
-        c_choice = 'O'
-    else:
-        c_choice = 'X'
-
-    # Human may starts first
-    clean()
-    while first != 'Y' and first != 'N':
-        try:
-            first = input('First to start?[y/n]: ').upper()
-        except (EOFError, KeyboardInterrupt):
-            print('Bye')
-            exit()
-        except (KeyError, ValueError):
-            print('Bad choice')
-
-    # Main loop of this game
-    while len(empty_cells(board)) > 0 and not game_over(board):
-        if first == 'N':
-            ai_turn(c_choice, h_choice)
-            first = ''
-
-        human_turn(c_choice, h_choice)
-        ai_turn(c_choice, h_choice)
-
-    # Game over message
-    if wins(board, HUMAN):
-        clean()
-        print(f'Human turn [{h_choice}]')
-        render(board, c_choice, h_choice)
-        print('YOU WIN!')
-    elif wins(board, COMP):
-        clean()
-        print(f'Computer turn [{c_choice}]')
-        render(board, c_choice, h_choice)
-        print('YOU LOSE!')
-    else:
-        clean()
-        render(board, c_choice, h_choice)
-        print('DRAW!')
-
-    exit()
-
-
-if __name__ == '__main__':
-    main()
+tk.mainloop()
